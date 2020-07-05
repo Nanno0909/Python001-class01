@@ -34,9 +34,9 @@ class MovieSpider(scrapy.Spider):
             i1 = Selector(response=response).xpatn('//div[class="movie-brief-container"]')
             # 在items.py定义
             item = SpidersItem()
-            title = movie.xpath('./div[1]/text()').get()
-            ca = movie.xpath('./div[3]/text()').get().extract()
-            date  = movie.xpath('./div[4]/text()').get()
+            title = i1.xpath('./div[1]/text()').get()
+            ca = i1.xpath('./div[3]/text()').get().extract()
+            date  = i1.xpath('./div[4]/text()').get()
             yield  item
 
     # 解析具体页面
